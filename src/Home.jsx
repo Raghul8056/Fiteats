@@ -1322,7 +1322,7 @@ export default function App() {
               </div>
               <div className="text-left">
                 <p className="text-2xl md:text-[1.6rem] text-gray-600 leading-relaxed font-medium">
-                  By the end of 2026, FitEats aims to become <span className="text-[#3f6b15] font-bold">Chennai's go-to brand for diet food.</span>
+                  By the end of 2026, FitEats aims to transform <span className="text-[#3f6b15] font-bold">100k people to become fit.</span>
                 </p>
               </div>
             </div>
