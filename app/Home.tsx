@@ -365,10 +365,10 @@ export default function App() {
       const isDesktop = window.innerWidth >= 1024;
       const baseWidth = getInitialCoords().width * 1.18; // Incorporate the inner image scale
       
-      // Dynamically calculate BOWL_SCALE so it takes up roughly 48% of the screen width on desktop
-      // This ensures it fits perfectly inside the 50% width columns (w-1/2) and looks larger without overlapping text
-      let BOWL_SCALE = isDesktop ? (window.innerWidth * 0.48) / baseWidth : 2.5;
-      BOWL_SCALE = Math.max(2.0, Math.min(BOWL_SCALE, 3.8));
+      // Dynamically calculate BOWL_SCALE so it takes up roughly 60% of the screen width on desktop
+      // This ensures it looks heroically large, using the safe padding area without overlapping actual text
+      let BOWL_SCALE = isDesktop ? (window.innerWidth * 0.60) / baseWidth : 2.5;
+      BOWL_SCALE = Math.max(2.5, Math.min(BOWL_SCALE, 3.8));
       
       const bowlRadius = (baseWidth * BOWL_SCALE) / 2;
       
