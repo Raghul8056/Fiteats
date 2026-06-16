@@ -363,14 +363,18 @@ export default function App() {
       const d4 = Math.max(0.01, 1 - p_whoFor);
 
       const isDesktop = window.innerWidth >= 1024;
-      const BOWL_SCALE = isDesktop ? 3.8 : 2.5;
-      
-      // Calculate exact X bounds based on scaled bowl radius to prevent ANY cropping
       const baseWidth = getInitialCoords().width * 1.18; // Incorporate the inner image scale
+      
+      // Dynamically calculate BOWL_SCALE so it takes up roughly 45% of the screen width on desktop
+      // This ensures it fits perfectly inside the 50% width columns (w-1/2) without overlapping text
+      let BOWL_SCALE = isDesktop ? (window.innerWidth * 0.45) / baseWidth : 2.5;
+      BOWL_SCALE = Math.max(2.0, Math.min(BOWL_SCALE, 3.8));
+      
       const bowlRadius = (baseWidth * BOWL_SCALE) / 2;
       
-      const rightEdgeX = isDesktop ? window.innerWidth - bowlRadius - 20 : window.innerWidth / 2; 
-      const leftEdgeX = isDesktop ? bowlRadius + 20 : window.innerWidth / 2;
+      // Center the bowl precisely in the middle of the empty 50% column
+      const rightEdgeX = isDesktop ? window.innerWidth * 0.75 : window.innerWidth / 2; 
+      const leftEdgeX = isDesktop ? window.innerWidth * 0.25 : window.innerWidth / 2;
       
       const bowlRadiusSmall = (baseWidth * (isDesktop ? 2.6 : 1.8)) / 2;
       const rightEdgeSmallX = isDesktop ? window.innerWidth - bowlRadiusSmall - 20 : window.innerWidth / 2;
