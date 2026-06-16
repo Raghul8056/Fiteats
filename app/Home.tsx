@@ -362,16 +362,18 @@ export default function App() {
       const d3 = Math.max(0.01, p_whoFor - p_whyChoose);
       const d4 = Math.max(0.01, 1 - p_whoFor);
 
-      const BOWL_SCALE = 3.8;
+      const isDesktop = window.innerWidth >= 1024;
+      const BOWL_SCALE = isDesktop ? 3.8 : 2.5;
       
       // Calculate exact X bounds based on scaled bowl radius to prevent ANY cropping
       const baseWidth = getInitialCoords().width * 1.18; // Incorporate the inner image scale
       const bowlRadius = (baseWidth * BOWL_SCALE) / 2;
-      const rightEdgeX = window.innerWidth - bowlRadius - 20; // 20px padding
-      const leftEdgeX = bowlRadius + 20; // 20px padding
       
-      const bowlRadiusSmall = (baseWidth * 2.6) / 2;
-      const rightEdgeSmallX = window.innerWidth - bowlRadiusSmall - 20;
+      const rightEdgeX = isDesktop ? window.innerWidth - bowlRadius - 20 : window.innerWidth / 2; 
+      const leftEdgeX = isDesktop ? bowlRadius + 20 : window.innerWidth / 2;
+      
+      const bowlRadiusSmall = (baseWidth * (isDesktop ? 2.6 : 1.8)) / 2;
+      const rightEdgeSmallX = isDesktop ? window.innerWidth - bowlRadiusSmall - 20 : window.innerWidth / 2;
 
       bowlTl = gsap.timeline();
 
@@ -380,31 +382,28 @@ export default function App() {
         duration: waitDur
       }, 'step0')
 
-      // Step 1: Card → About Us (RIGHT side, Middle Line)
-      // Smooth vertical movement
+      // Step 1: Card → About Us
       .to('.shared-parallax-bowl', {
-        y: getSectionCenter('#about-us'),
+        y: getSectionCenter(isDesktop ? '#about-us' : '#about-anchor'),
         scale: BOWL_SCALE,
         rotation: -20,
         duration: d1,
         ease: 'power2.inOut'
       }, 'step1')
-      // Bouncing horizontal movement (hits the right wall mathematically)
       .to('.shared-parallax-bowl', {
         x: rightEdgeX,
         duration: d1,
         ease: 'back.out(1.5)'
       }, 'step1')
 
-      // Step 2: About Us → Why Choose (LEFT side, Middle Line)
+      // Step 2: About Us → Why Choose
       .to('.shared-parallax-bowl', {
-        y: getSectionCenter('#how-it-works'),
+        y: getSectionCenter(isDesktop ? '#how-it-works' : '#why-choose-anchor'),
         scale: BOWL_SCALE,
         rotation: 20, 
         duration: d2,
         ease: 'power2.inOut'
       }, 'step2')
-      // Bouncing horizontal movement (hits the left wall mathematically)
       .to('.shared-parallax-bowl', {
         x: leftEdgeX,
         duration: d2,
@@ -412,18 +411,17 @@ export default function App() {
       }, 'step2')
 
       // Calculate the much smaller radius for the Who Is It For section so it doesn't cover cards
-      const bowlRadiusTiny = (baseWidth * 1.5) / 2;
-      const rightEdgeTinyX = window.innerWidth - bowlRadiusTiny - 20;
+      const bowlRadiusTiny = (baseWidth * (isDesktop ? 1.5 : 1.2)) / 2;
+      const rightEdgeTinyX = isDesktop ? window.innerWidth - bowlRadiusTiny - 20 : window.innerWidth / 2;
 
-      // Step 3: Why Choose → Who Is It For (HEADING CORNER)
+      // Step 3: Why Choose → Who Is It For
       bowlTl.to('.shared-parallax-bowl', {
-        y: getSectionCenter('#who-is-it-for') - window.innerHeight * 0.25,
-        scale: 1.5,
+        y: getSectionCenter('#who-is-it-for') - window.innerHeight * (isDesktop ? 0.25 : 0.35),
+        scale: isDesktop ? 1.5 : 1.2,
         rotation: -20,
         duration: d3,
         ease: 'power2.inOut'
       }, 'step3')
-      // Bouncing horizontal movement (hits the right wall mathematically)
       .to('.shared-parallax-bowl', {
         x: rightEdgeTinyX,
         duration: d3,
@@ -1043,13 +1041,13 @@ export default function App() {
             </div>
 
           </div>
-          <div className="w-full lg:w-1/2"></div>
+          <div id="about-anchor" className="w-full lg:w-1/2 min-h-[50vw] md:min-h-[400px] lg:min-h-0"></div>
         </section>
 
         {/* Section 3: Why Choose */}
         <section id="how-it-works" className="relative flex flex-col lg:flex-row min-h-[100vh] pb-[15vh] scroll-mt-20">
           {/* Left Column (Empty for bowl parallax) */}
-          <div className="w-full lg:w-1/2"></div>
+          <div id="why-choose-anchor" className="w-full lg:w-1/2 min-h-[50vw] md:min-h-[400px] lg:min-h-0"></div>
 
           {/* Right Column: holds the text and cards */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center pr-[5%] lg:pr-[8%] pl-[5%] z-20 text-left items-start">
