@@ -1,16 +1,40 @@
-# React + Vite
+# Fit Eat — Next.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium health meal delivery website built with Next.js 15 (App Router), Tailwind CSS v4, GSAP, and Lenis.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS v4
+- **Animations**: GSAP + ScrollTrigger + @gsap/react
+- **Smooth Scroll**: Lenis
+- **Text Splitting**: SplitType
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+app/
+├── layout.jsx          # Root layout (fonts, metadata)
+├── globals.css         # Global styles + Tailwind theme
+├── page.jsx            # Home (/)
+├── Home.jsx            # Home page component
+├── HowItWorks.jsx      # How It Works component
+├── how-it-works/
+│   └── page.jsx        # /how-it-works
+├── about-us/
+│   └── page.jsx        # /about-us
+├── pricing/
+│   └── page.jsx        # /pricing
+└── contact/
+    └── page.jsx        # /contact
+public/
+└── assets/             # Images, videos, icons
+```
 
-## Expanding the ESLint configuration
+## Dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run dev     # starts on port 3005
+npm run build
+npm run start
+```
