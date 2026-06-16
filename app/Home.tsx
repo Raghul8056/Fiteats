@@ -1381,7 +1381,7 @@ export default function App() {
           {/* Right Column (Circular Graphic Design) */}
           <div className="w-full lg:w-1/2 relative min-h-[600px] lg:min-h-screen flex items-center z-10">
             {/* A container positioned absolutely extending off-screen to the right */}
-            <div className="sec5-graphic-container absolute right-[-10%] lg:right-[-12%] w-[900px] lg:w-[1200px] h-[900px] lg:h-[1200px] flex items-center justify-center pointer-events-none">
+            <div className="sec5-graphic-container absolute right-[-10%] lg:right-[-5%] w-[130%] lg:w-[110%] aspect-square flex items-center justify-center pointer-events-none">
 
               {/* Dashed Circular Progress Curve */}
               <svg className="absolute w-[87%] h-[87%] text-[#3f6b15]/40" viewBox="0 0 100 100">
