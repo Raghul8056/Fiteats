@@ -109,15 +109,24 @@ export default function HowItWorks() {
     } else {
       document.body.style.overflow = '';
     }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isLoading]);
 
   useEffect(() => {
+    // Force scroll to top on mount for Next.js router integration
+    window.scrollTo(0, 0);
+
     const lenis = new Lenis({ 
       duration: 1.5, 
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 0.85
     });
+
+    lenis.scrollTo(0, { immediate: true });
 
     lenis.on('scroll', ScrollTrigger.update);
 

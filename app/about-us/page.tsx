@@ -38,9 +38,16 @@ export default function AboutUs() {
     } else {
       document.body.style.overflow = '';
     }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isLoading]);
 
   useEffect(() => {
+    // Force scroll to top on mount for Next.js router integration
+    window.scrollTo(0, 0);
+
     // Initialize Lenis for Smooth Scrolling
     const lenis = new Lenis({ 
       duration: 1.5, 
@@ -48,6 +55,8 @@ export default function AboutUs() {
       smoothWheel: true,
       wheelMultiplier: 0.85
     });
+
+    lenis.scrollTo(0, { immediate: true });
 
     lenis.on('scroll', ScrollTrigger.update);
 
