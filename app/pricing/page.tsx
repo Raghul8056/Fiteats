@@ -43,6 +43,16 @@ export default function PricingPage() {
   }, []);
 
   useGSAP(() => {
+    // Hero Animations
+    gsap.fromTo('.hero-title span', 
+      { y: 80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power4.out', delay: 0.2 }
+    );
+    gsap.fromTo('.hero-sub', 
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.6 }
+    );
+
     gsap.to('.leaf-1', { scrollTrigger: { trigger: '.parallax-sections-wrapper', start: 'top top', end: 'bottom bottom', scrub: 0.8 }, y: () => window.innerHeight * 1.2, x: 100, rotation: 180, ease: 'none' });
     gsap.to('.leaf-2', { scrollTrigger: { trigger: '.parallax-sections-wrapper', start: 'top top', end: 'bottom bottom', scrub: 1.5 }, y: () => window.innerHeight * 0.8, x: -80, rotation: -120, ease: 'none' });
     gsap.to('.leaf-3', { scrollTrigger: { trigger: '.parallax-sections-wrapper', start: 'top top', end: 'bottom bottom', scrub: 0.6 }, y: () => window.innerHeight * 1.1, x: 120, rotation: 240, ease: 'none' });
@@ -122,13 +132,13 @@ export default function PricingPage() {
         <img src={leaf3} alt="Leaf" className="leaf-3 absolute z-10 pointer-events-none will-change-transform" style={{ top: '70vh', left: '8%', width: '110px', opacity: 0.7 }} />
         <img src={leaf4} alt="Leaf" className="leaf-4 absolute z-10 pointer-events-none will-change-transform" style={{ top: '90vh', right: '12%', width: '80px', opacity: 0.8 }} />
 
-        {/* Hero Section */}
+      {/* Hero Section */}
       <section className="w-full pt-[160px] pb-[80px] flex flex-col items-center text-center px-4 relative z-10">
-        <h1 className="font-playfair text-[3.5rem] md:text-[5.5rem] leading-[1.08] font-bold text-brand-dark mb-8 tracking-tight hero-fade">
-          Pricing That Fits Your<br />
-          <span className="text-brand-green font-playfair">Life</span>
+        <h1 className="hero-title font-playfair text-[3.5rem] md:text-[5.5rem] leading-[1.08] font-bold text-brand-dark mb-8 tracking-tight overflow-hidden">
+          <span className="block inline-block">Pricing That Fits Your</span>
+          <span className="block inline-block text-brand-green font-playfair">Life</span>
         </h1>
-        <p className="text-lg md:text-[1.3rem] text-gray-500 max-w-[650px] leading-relaxed font-medium">
+        <p className="hero-sub text-lg md:text-[1.3rem] text-gray-500 max-w-[650px] leading-relaxed font-medium">
           No fixed plans. <span className="text-brand-green font-bold">Built around you.</span> Tell us your goals—we'll design your plan and pricing tailored to your exact macros and lifestyle.
         </p>
       </section>
