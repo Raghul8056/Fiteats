@@ -420,8 +420,9 @@ export default function App() {
 
       // Step 3: Why Choose → Who Is It For
       bowlTl.to('.shared-parallax-bowl', {
-        // Move the bowl higher up on desktop so it doesn't overlap the cards below
-        y: getSectionCenter('#who-is-it-for') - window.innerHeight * (isDesktop ? 0.38 : 0.35),
+        // Move the bowl significantly higher up on desktop so it sits in the empty padding space
+        // completely above the cards and text.
+        y: getSectionCenter('#who-is-it-for') - window.innerHeight * (isDesktop ? 0.50 : 0.45),
         scale: isDesktop ? 1.5 : 1.2,
         rotation: -20,
         duration: d3,
