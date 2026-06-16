@@ -374,11 +374,11 @@ export default function HowItWorks() {
           <div className="impact-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.8)_0%,rgba(34,197,94,0.4)_20%,rgba(34,197,94,0)_60%)] opacity-0 scale-0 pointer-events-none mix-blend-screen"></div>
           <div className="impact-flare absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[40px] bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.9)_0%,rgba(34,197,94,0.4)_20%,rgba(34,197,94,0)_70%)] opacity-0 scale-0 pointer-events-none mix-blend-screen"></div>
           
-          <div className="glove-left glove-left-init absolute top-1/2 left-1/2 flex items-center z-10 opacity-0">
+          <div className="glove-left glove-left-init absolute top-1/2 left-1/2 flex items-center z-10" style={{ transform: 'translate(-240%, -50%)' }}>
             <img src="/left_e_h.png" alt="Left Glove" className="h-[250px] md:h-[400px] w-auto object-contain drop-shadow-[0_0_40px_rgba(34,197,94,0.4)]" />
           </div>
 
-          <div className="glove-right glove-right-init absolute top-1/2 left-1/2 flex items-center z-10 opacity-0">
+          <div className="glove-right glove-right-init absolute top-1/2 left-1/2 flex items-center z-10" style={{ transform: 'translate(130%, -50%)' }}>
             <img src="/right_h.png" alt="Right Glove" className="h-[250px] md:h-[400px] w-auto object-contain drop-shadow-[0_0_40px_rgba(34,197,94,0.4)]" />
           </div>
 
